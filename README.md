@@ -9,9 +9,30 @@
 
 *TL;DR: Just replace usage of `TabView` et al. with `CustomTabView`, `CustomTab`, etc.*
 
-Use SPM to incorporate this library into your projects.
+Using this library is as simple as it sounds:
+```swift
+import CustomTabView
 
-In this library, the following SwiftUI types have direct analogs:
+struct ContentView: View {
+    var body: some View {
+        CustomTabView {
+            CustomTab("A", systemImage: "a.circle") { ... }
+            CustomTab("B", systemImage: "b.circle") { ... }
+            CustomTabSection("Contrived Examples") {
+                CustomTab("C", systemImage: "c.circle") { ... }
+                CustomTab("D (custom image)", image: "my-image-resource") { ... }
+                CustomTab("E (no image)") { ... }
+            }
+        }
+    }
+}
+```
+
+Just add a Swift package dependency, import the library, and make your views.
+
+### Details
+
+In this library, the following SwiftUI types have direct analogues:
 - `TabView -> CustomTabView`
 - `Tab -> CustomTab`
 - `TabSection -> CustomTabSection`
